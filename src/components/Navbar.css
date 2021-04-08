@@ -2,6 +2,7 @@
 
 #navbar {
   display: block;
+  position: fixed;
   width: 100vw;
   height: 75px;
   background-color: green;
@@ -69,4 +70,10 @@
 
 #account button:hover {
   cursor: pointer;
+}
+
+#navMargin {
+  display: block;
+  width: 100vw;
+  height: 75px;
 }

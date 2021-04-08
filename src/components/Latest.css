@@ -1,0 +1,52 @@
+#latest {
+  display: block;
+  float: right;
+  margin-right: 8rem;
+  padding: 1rem;
+  width: 300px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow-y: auto;
+}
+
+#latest h2 {
+  margin: 0;
+  text-align: center;
+}
+
+#latestFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#latestFlexContainer div {
+  background-color: aqua;
+  margin-top: 10px;
+}
+
+#latestFlexContainer div h3 {
+  padding-left: 25px;
+  float: left;
+  width: 70px;
+  word-wrap: break-word;
+}
+
+#latestFlexContainer div img {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  float: left;
+}
+
+#latestFlexContainer div p {
+  padding-left: 10px;
+  float: left;
+}
+
+#latestFlexContainer div button {
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
