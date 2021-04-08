@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#start {
+  display: block;
+  width: 100vw;
+  height: 80vh;
+  background-color: orange;
+
+}

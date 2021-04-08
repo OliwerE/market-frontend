@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+#footer {
+  display: block;
+  width: 100vw;
+  height: 200px;
+  background-color: grey;
+}
