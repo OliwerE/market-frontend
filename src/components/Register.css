@@ -12,3 +12,15 @@
   color: white;
   text-align: center;
 }
+
+#registerBox form input {
+  width: 100px;
+}
+
+#firstFormLabel, .formLabel {
+  margin-right: 10px;
+}
+
+.formLabel {
+  margin-left: 10px;
+}
