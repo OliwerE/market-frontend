@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#helpElement {
+  display: grid;
+  grid-template-areas: 
+  'search search search'
+  'questions questions form';
+  min-height: 75vh;
+}
+
+#helpSearch {
+  grid-area: search;
+  background-color: green;
+  height: 300px;
+}
+
+#helpQuestions {
+  grid-area: questions;
+  background-color: orange;
+  min-height: 400px;
+}
+
+#helpForm {
+  grid-area: form;
+  background-color: red;
+  height: 400px;
+}

@@ -3,8 +3,16 @@ import './Help.css'
 
 function Help() {
   return (
-    <div>
-      <h1>Hjälp</h1>
+    <div id="helpElement">
+      <div id="helpSearch">
+        sök
+      </div>
+      <div id="helpQuestions">
+        frågor
+      </div>
+      <div id="helpForm">
+        formulär
+      </div>
     </div>
   )
 }
