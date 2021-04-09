@@ -5,13 +5,13 @@
   position: fixed;
   width: 100vw;
   height: 75px;
-  background-color: green;
+  background-color: #ebe6e6;
 }
 
 #logo {
   display: block;
   float: left;
-  background-color: yellow;
+  /* background-color: yellow; */
   width: 300px;
   height: 100%;
 }
@@ -38,7 +38,7 @@
   margin-left: 1rem;
   line-height: 75px;
   text-align: center;
-  background-color: grey;
+  background-color: #ebe6e6;
 }
 
 #navMenu li p {
@@ -46,18 +46,24 @@
   height: 100%;
   margin: 0;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #navMenu li p:hover {
-  background-color: greenyellow;
+  background-color: #cccccc;
   cursor: pointer;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
 }
 
 #account {
   float: right;
   width: 500px;
   height: 100%;
-  background-color: rgb(0, 247, 255);
+  /* background-color: rgb(0, 247, 255); */
 }
 
 #account button {
