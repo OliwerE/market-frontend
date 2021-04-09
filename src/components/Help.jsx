@@ -1,6 +1,8 @@
 import React from 'react'
 import './Help.css'
 
+import Questions from './Questions.jsx'
+
 function Help() {
   return (
     <div id="helpElement">
@@ -8,7 +10,7 @@ function Help() {
         sök
       </div>
       <div id="helpQuestions">
-        frågor
+        <Questions />
       </div>
       <div id="helpForm">
         formulär

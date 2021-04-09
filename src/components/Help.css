@@ -16,7 +16,7 @@
 
 #helpQuestions {
   grid-area: questions;
-  background-color: orange;
+  background-color: #fff;
   min-height: 400px;
 }
 

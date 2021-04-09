@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.questionContainer {
+  border-bottom: 1px solid black;
+}
+
+.questionTitle {
+  background-color: #5c5c5c;
+  height: 50px;
+  cursor: pointer;
+}
+
+.questionAnswer {
+  display: none;
+  min-height: 50px;
+  padding-left: 10px;
+}
+
+.questionAnswer p {
+  margin: 0;
+}
+
+.questionContainer h3 {
+  margin: 0;
+  line-height: 50px;
+  padding-left: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin: 5px;
+}
