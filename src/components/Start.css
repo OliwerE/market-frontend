@@ -1,13 +1,33 @@
 @charset "UTF-8";
 
 #start {
-  display: block;
-  width: 100vw;
-  height: 80vh;
+  display: grid;
   background-color: orange;
-
+  grid-template-columns: 2fr 1fr 1fr;
+  /* grid-template-rows: 3fr 1fr; */
+  grid-template-areas:
+    "mainLeft mainLeft rightMenu"
+    "mainLeft mainLeft rightMenu";
 }
 
 h1 {
   margin: 0;
+}
+
+#mainLeft {
+  grid-area: mainLeft;
+  height: 600px;
+  width: 100%;
+}
+
+#rightMenu {
+  grid-area: rightMenu;
+  height: 100%;
+  width: 100%;
+}
+
+#latest {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 85%;
 }

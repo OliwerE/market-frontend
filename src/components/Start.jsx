@@ -8,10 +8,14 @@ import StartShortcuts from './StartShortcuts.jsx'
 const Start = () => {
   return (
       <div id="start">
-        {/* <h1>Start</h1> */}
+        <div id="mainLeft">
         <StartSearch />
         <StartShortcuts />
-        <Latest />
+        </div>
+        <div id="rightMenu">
+          <Latest id="latest" />
+        </div>
+
       </div>
     // <StartSearch />
     // <Categories />
@@ -20,3 +24,11 @@ const Start = () => {
 }
 
 export default Start
+
+/*
+
+        <StartSearch />
+        <StartShortcuts />
+        <Latest />
+
+*/

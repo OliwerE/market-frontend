@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
 #searchStart {
-  display: block;
-  float: left;
   background-color: rgb(87, 230, 87);
-  width: 1350px;
-  height: 500px;
-  margin: 30px 0px 0px 30px;
+  height: 400px;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 1rem;
 }
