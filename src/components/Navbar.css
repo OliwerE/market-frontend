@@ -1,35 +1,38 @@
 @charset "UTF-8";
 
 #navbar {
-  display: block;
+  display: flex;
   position: fixed;
   width: 100vw;
   height: 75px;
   background-color: #ebe6e6;
 }
 
-#logo {
-  display: block;
-  float: left;
-  /* background-color: yellow; */
-  width: 300px;
-  height: 100%;
+.navbarElements {
+  width: 50px;
+  height:75px;
 }
 
-#navMenu {
-  margin: 0 auto;
+#navLogo {
+  justify-content: center;
+  min-width: 20vw;
 }
 
-#navMenu ul {
+#globNav {
+  width: 600px;
+  justify-content: center;
+}
+
+#globNav ul {
   display: block;
   float: left;
   width: 600px;
   height: 100%;
-  margin-left: 6rem;
   margin-top: 0;
+  margin: 0;
 }
 
-#navMenu li {
+#globNav li {
   display: block;
   float: left;
   height: 100%;
@@ -41,32 +44,29 @@
   background-color: #ebe6e6;
 }
 
-#navMenu li p {
-  width: 100%;
+#globNav li p {
+    width: 100%;
   height: 100%;
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
 }
-
-#navMenu li p:hover {
-  background-color: #cccccc;
-  cursor: pointer;
-}
-
 .link {
   color: black;
   text-decoration: none;
 }
 
-#account {
-  float: right;
-  width: 500px;
-  height: 100%;
-  /* background-color: rgb(0, 247, 255); */
+#globNav li p:hover {
+  background-color: #cccccc;
+  cursor: pointer;
 }
 
-#account button {
+#login{
+margin-left: auto;
+min-width: 450px;
+}
+
+#login button {
   height: 50px;
   width: 150px;
   margin-left: 2rem;
@@ -74,12 +74,37 @@
   border-radius: 0.5rem;
 }
 
-#account button:hover {
-  cursor: pointer;
-}
-
 #navMargin {
   display: block;
   width: 100vw;
   height: 75px;
 }
+
+@media screen and (max-width: 1220px) {
+  #login button {
+    margin-left: 0;
+    width: 150px;
+  }
+    #login button:last-child {
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  #login button {
+    display: block;
+    height: 30px;
+    margin-top: 5px;
+  }
+  #login button:last-child {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  #login button {
+    width: 75px;
+  }
+}
+
+/* Lägg till fler media queries! */
