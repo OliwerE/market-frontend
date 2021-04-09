@@ -2,6 +2,7 @@ import React from 'react'
 import './Help.css'
 
 import Questions from './Questions.jsx'
+import Form from './Form.jsx'
 
 function Help() {
   return (
@@ -15,7 +16,7 @@ function Help() {
         <Questions />
       </div>
       <div id="helpForm">
-        formulär
+        <Form />
       </div>
     </div>
   )

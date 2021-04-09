@@ -5,6 +5,7 @@
   grid-template-areas: 
   'title title title'
   'questions questions form';
+  grid-template-columns: 1fr 1fr 1fr;
   min-height: 75vh;
 }
 
