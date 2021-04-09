@@ -6,8 +6,10 @@ import Questions from './Questions.jsx'
 function Help() {
   return (
     <div id="helpElement">
-      <div id="helpSearch">
-        sök
+      <div id="helpTitle">
+          <div id="text">
+            <h1>Frågor &amp; svar</h1>
+          </div>
       </div>
       <div id="helpQuestions">
         <Questions />

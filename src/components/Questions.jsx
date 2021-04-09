@@ -21,7 +21,6 @@ const Questions = () => {
 
   return (
     <>
-    <h2>Frågor &amp; svar</h2>
       {questions.map((question) => {
         return <Question key={question.id} props={question} />
       })}

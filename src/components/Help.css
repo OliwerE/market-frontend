@@ -3,15 +3,23 @@
 #helpElement {
   display: grid;
   grid-template-areas: 
-  'search search search'
+  'title title title'
   'questions questions form';
   min-height: 75vh;
 }
 
-#helpSearch {
-  grid-area: search;
-  background-color: green;
+#helpTitle {
+  grid-area: title; 
+  display:table;
+  background-color: #fff;
   height: 300px;
+}
+
+#text {
+  display: table-cell;
+  text-align:center;
+  vertical-align: middle;
+  font-size: 2rem;
 }
 
 #helpQuestions {
