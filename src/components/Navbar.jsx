@@ -1,9 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
+import Login from './Login.jsx'
+import Register from './Register.jsx'
 
 const Navbar = () => {
+  const [loginWindow, setLoginWindow] = useState(false)
+  const [registerWindow, setRegisterWindow] = useState(false)
+ 
+  const openLogin = () => {
+    if (loginWindow === false && registerWindow === false) {
+      setLoginWindow(true)
+    }
+    if (loginWindow === false && registerWindow === true) {
+      setRegisterWindow(false)
+      setLoginWindow(true)
+    }
+  }
+
+    const closeLogin = () => {
+    if (loginWindow === true) {
+      setLoginWindow(false)
+    }
+  }
+
+    const openRegister = () => {
+    if (loginWindow === false && registerWindow === false) {
+      setRegisterWindow(true)
+    }
+
+    if (loginWindow === true && registerWindow === false) {
+      setLoginWindow(false)
+      setRegisterWindow(true)
+    }
+  }
+
+    const closeRegister = () => {
+    if (registerWindow === true) {
+      setRegisterWindow(false)
+    }
+  }
+
   return (
     <>
       <div id="navbar">
@@ -29,11 +67,19 @@ const Navbar = () => {
           </ul>
         </div>
         <div id="login" className="navbarElements">
-          <button>Logga in</button>
-          <button>Registrera</button>
+          <button onClick={openLogin}>Logga in</button>
+          <button onClick={openRegister}>Registrera</button>
         </div>
       </div>
       <div id="navMargin"></div>
+      
+      {loginWindow ? <Login close={closeLogin} /> : null}
+      {registerWindow ? <Register close={closeRegister} /> : null}
+      
+      
+      {/* <div id="loginRegisterBox">
+        <h2>Login/register</h2>
+      </div> */}
     </>
   )
 }
