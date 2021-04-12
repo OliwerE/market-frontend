@@ -7,7 +7,6 @@
   grid-template-areas:
     "categories search latest"
     "categories listings latest";
-  background-color: orange;
   min-height: 80vh;
 }
 
@@ -23,13 +22,11 @@
 
 #sellListings {
   grid-area: listings;
-  background-color: rgb(224, 59, 59);
 }
 
 #sellLatest {
   grid-area: latest;
   padding: 1rem;
-  background-color: rgb(64, 205, 230);
 }
 
 #latestComponent {

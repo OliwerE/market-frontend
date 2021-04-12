@@ -8,20 +8,45 @@
   grid-template-columns: 5% 20% 60% 10% 5%;
   grid-template-areas: 
   ". image title price .";
-  background-color: orange;
+  background-color: #ebe6e6;
+  cursor: pointer;
+}
+
+#listing:hover {
+  background-color: #cfcaca;  
 }
 
 #listingImage {
   grid-area: image;
-  background-color: aqua;
+  margin: 0;
+}
+
+#listingImage img {
+  width: 90%;
+  margin-top: 5px;
 }
 
 #listingTitle {
   grid-area: title;
-  background-color: darkred;
+}
+
+#listingTitle h2 {
+  text-align: center;
+  line-height: 120px;
+  margin: 0;
 }
 
 #listingPrice {
+  position: relative;
   grid-area: price;
-  background-color: grey;
+}
+
+#listingPrice p {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 0;
+  margin: 0;
+  color: black;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
