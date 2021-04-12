@@ -7,7 +7,7 @@ import Listing from './Listing.jsx'
 const Listings = () => {
   const [listings, setListings] = useState([])
   const getData = async () => {
-    await fetch('http://192.168.1.4:8080/test/listings').then(res => {
+    await fetch('http://localhost:8080/test/listings').then(res => {
       return res.json()
     }).then((json) => {
       setListings(json)
@@ -25,7 +25,7 @@ const Listings = () => {
   return (
     <div id="listings">
       {listings.map((listing) => {
-        return <Listing />
+        return <Listing listing={listing} />
       })}
     </div>
   )

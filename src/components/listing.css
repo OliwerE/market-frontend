@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#listing {
+  display: grid;
+  height: 120px;
+  width: 100%;
+  margin-bottom: 1rem;
+  grid-template-columns: 5% 20% 60% 10% 5%;
+  grid-template-areas: 
+  ". image title price .";
+  background-color: orange;
+}
+
+#listingImage {
+  grid-area: image;
+  background-color: aqua;
+}
+
+#listingTitle {
+  grid-area: title;
+  background-color: darkred;
+}
+
+#listingPrice {
+  grid-area: price;
+  background-color: grey;
+}
