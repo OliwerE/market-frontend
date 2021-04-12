@@ -7,7 +7,7 @@ const Questions = () => {
   const [questions, setQuestions] = useState([])
 
   const getQuestions = async () => {
-    await fetch('http://localhost:8080/test/questions').then((res) => {
+    await fetch('http://192.168.1.4:8080/test/questions').then((res) => {
       return res.json()
     }).then((json) => {
       setQuestions(json)

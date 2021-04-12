@@ -1,1 +1,37 @@
 @charset "UTF-8";
+
+#sellMain {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 100px calc(100% - 100px);
+  grid-template-areas:
+    "categories search latest"
+    "categories listings latest";
+  background-color: orange;
+  min-height: 80vh;
+}
+
+#sellCategories {
+  grid-area: categories;
+  background-color: rgb(119, 119, 221);
+}
+
+#sellSearch {
+  grid-area: search;
+  background-color: green;
+}
+
+#sellListings {
+  grid-area: listings;
+  background-color: rgb(224, 59, 59);
+}
+
+#sellLatest {
+  grid-area: latest;
+  padding: 1rem;
+  background-color: rgb(64, 205, 230);
+}
+
+#latestComponent {
+  /* fixa: position fixed! */ 
+}
