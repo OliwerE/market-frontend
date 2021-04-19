@@ -27,7 +27,7 @@ const Latest = () => {
     <div id="latest">
       <h2>Senaste annonserna</h2>
       <div id="latestFlexContainer">
-        {adverts.map((advert) => {
+        {/* {adverts.map((advert) => {
           const {title, img, price} = advert
           return (
             <div>
@@ -37,7 +37,7 @@ const Latest = () => {
               <button>visa annons</button>
             </div>
           )
-        })}
+        })} */}
 
       </div>
     </div>

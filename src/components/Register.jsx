@@ -3,7 +3,7 @@ import './Register.css'
 
 const Register = ({ close }) => {
   const [firstname, setFirstName] = useState('') // byt till lösning utan många useState?
-  const [lastName, setLastName] = useState('')
+  const [lastname, setLastname] = useState('')
   const [username, setUsername] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('')
@@ -12,7 +12,23 @@ const Register = ({ close }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(firstname, lastName, username, phoneNumber, password, passwordRepeat, city)
+    console.log(firstname, lastname, username, phoneNumber, password, passwordRepeat, city)
+    
+    const userData = { firstname, lastname, username, phoneNumber, password, passwordRepeat, city }
+
+    fetch('http://localhost:8080/auth/register', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)
+    }).then(res => {
+      return res.json()
+    }).then(json => {
+      console.log(json)
+    }).catch(err => console.error(err))
+
   }
 
 
@@ -24,7 +40,7 @@ const Register = ({ close }) => {
           <label id="firstFormLabel" for="firstname">Förnamn:</label>
           <input type="text" id="firstname" name="firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)}></input>
           <label className="formLabel" for="lastname">Efternamn:</label>
-          <input type="text" id="lastname" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)}></input><br>
+          <input type="text" id="lastname" name="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)}></input><br>
           
           </br><label className="formLabel" for="username">Användarnamn:</label>
           <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>

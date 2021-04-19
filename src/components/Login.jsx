@@ -5,11 +5,46 @@ const Login = ({ close }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const handleResponse = (status, json) => {
+    console.log('status: ', status)
+    console.log('----')
+    console.log(json)
+
+    if (status === 200) {
+      // "logga in" användare
+    } else if (status === 401) {
+      // meddela användare att inloggning misslyckades
+    } else {
+      // okänt fel
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(username, password)
+    const userData = {
+      username,
+      password
+    }
 
-    // koppla ihop med backend.
+    let statusCode = 0
+    fetch('http://localhost:8080/auth/login', {
+    method: 'POST',
+    // mode: 'cors', // krävs ej
+    credentials: 'include',
+    headers: {
+        "Content-Type": "application/json", // "application/x-www-form-urlencoded"
+        // "Access-Control-Allow-Origin": "http://localhost:3000" // krävs ej på klient
+    },
+    body: JSON.stringify(userData)
+    }).then(res => {
+      statusCode = res.status
+      return res.json()
+    }).then(json => {
+      handleResponse(statusCode, json)
+    }).catch(err => console.error(err))
+
+    
+
   }
 
   return (
