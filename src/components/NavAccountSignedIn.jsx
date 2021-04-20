@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './NavAccountSignedIn.css'
 
 const NavAccountSignedIn = ({ setAuth, name }) => {
@@ -39,9 +40,16 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
     }).catch(err => console.error(err))
   }
 
+  
+  const history = useHistory()
+  const handleUsernameClick = () => {
+    console.log('clicked username!')
+    history.push('/konto')
+  }
+
   return (
     <div id="navSignedIn">
-      <h2>{username}</h2>
+      <h2 onClick={handleUsernameClick} >{username}</h2>
       <button onClick={handleLogout} >Logga ut</button>
     </div>
   )

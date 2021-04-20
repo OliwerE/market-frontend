@@ -7,3 +7,8 @@
 #navSignedIn h2 {
   float: left;
 }
+
+#navSignedIn h2:hover {
+  cursor: pointer;
+  color: rgb(82, 175, 45);
+}

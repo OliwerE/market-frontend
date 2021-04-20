@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect, Component } from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
@@ -11,6 +11,7 @@ import Buy from './components/Buy'
 import Sell from './components/Sell'
 import Help from './components/Help'
 import Error from './components/Error'
+import Account from './components/Account'
 
 function App() {
   const [auth, setAuth] = useState(false) // Om anv är inloggad
@@ -54,6 +55,14 @@ function App() {
           <Route exact path="/hjalp">
             <Help />
           </Route>
+          
+          
+          <Route exact path="/test">
+            <Redirect to="/" />
+          </Route>
+
+          <ProtectedAccount exact path="/konto" auth={auth} component={Account} />
+
           <Route path="*">
             <Error />
           </Route>
@@ -61,6 +70,10 @@ function App() {
         <Footer />
       </Router>
   );
+}
+
+const ProtectedAccount = ({ auth, component:Component}) => {
+   return <Route exact path="/konto" render={() => auth ? (<Component />) : (<Redirect to="/" />)} />
 }
 
 export default App;
