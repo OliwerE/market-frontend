@@ -2,59 +2,73 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
 
+import Modal from './Modal.jsx'
+
 const Login = ({ close, setAuth }) => {
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleResponse = (status, json) => {
-    console.log('status: ', status)
-    console.log('----')
-    console.log(json)
+  const [modal, setModal] = useState(false)
+  const [modalContent, setModalContent] = useState('')
 
+  /* // Används ej
+  const closeModal = () => { // Bugg: om användare klickar flera ggr så stängs modal efter första 10 sek!
+    setModal(false)
+  }
+  */
+
+  const handleResponse = (status, json) => {
     if (status === 200) {
-      // "logga in" användare
       setAuth(true) // obs byt till use context ist för prop drilling!
       close() // stänger fönster
       history.push('/konto')
     } else if (status === 401) {
-      // meddela användare att inloggning misslyckades
+      setModalContent('Inloggningen misslyckades. Kontrollera dina användaruppgifter')
+      setModal(true)
     } else {
-      // okänt fel
+      setModalContent('Ett okänt fel har inträffat, försök igen senare.')
+      setModal(true)
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const userData = {
-      username,
-      password
+    if (username.trim().length > 0 && password.trim().length > 0) {
+      const userData = {
+        username,
+        password
+      }
+      let statusCode = 0
+      fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData)
+      }).then(res => {
+        statusCode = res.status
+        return res.json()
+      }).then(json => {
+        handleResponse(statusCode, json)
+      }).catch(err => {
+        console.error(err)
+        setModalContent('Ett okänt fel har inträffat, försök igen senare.')
+        setModal(true)
+      })
+    } else {
+      setModalContent('Ange både användarnamn och lösenord!')
+      setModal(true)
     }
-
-    let statusCode = 0
-    fetch('http://localhost:8080/auth/login', {
-    method: 'POST',
-    // mode: 'cors', // krävs ej
-    credentials: 'include',
-    headers: {
-        "Content-Type": "application/json", // "application/x-www-form-urlencoded"
-        // "Access-Control-Allow-Origin": "http://localhost:3000" // krävs ej på klient
-    },
-    body: JSON.stringify(userData)
-    }).then(res => {
-      statusCode = res.status
-      return res.json()
-    }).then(json => {
-      handleResponse(statusCode, json)
-    }).catch(err => console.error(err))
-
-    
-
   }
 
   return (
       <div id="loginBox">
         <button onClick={close}>Stäng</button>
+        <div id="loginModalBox">
+          {modal && <Modal modalContent={modalContent} /*close={closeModal}*/ />}
+        </div>
         <h2>Logga in</h2>
         <form onSubmit={handleSubmit}>
           <label for="username">Användarnamn:</label><br>

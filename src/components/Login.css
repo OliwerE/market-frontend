@@ -12,3 +12,12 @@
   color: white;
   text-align: center;
 }
+
+#loginBox h2 {
+  margin: 0;
+}
+
+#loginModalBox {
+  height: 25px;
+  margin-top: 5px;
+}

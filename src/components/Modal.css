@@ -1,0 +1,14 @@
+  @charset "UTF-8";
+
+#modal {
+  background-color: #ebe6e6;
+  color: black;
+  height: 25px;
+  width: 90%;
+  margin: 0 auto 0;
+  border-radius: 0.25rem;
+}
+
+#modal p {
+  margin: 0;
+}
