@@ -5,6 +5,7 @@ import './Navbar.css';
 import Login from './Login.jsx'
 import Register from './Register.jsx'
 import NavAccountSignedOut from './NavAccountSignedOut.jsx'
+import NavAccountSignedIn from './NavAccountSignedIn.jsx'
 
 const Navbar = ({ auth, setAuth }) => {
   const [loginWindow, setLoginWindow] = useState(false)
@@ -68,7 +69,7 @@ const Navbar = ({ auth, setAuth }) => {
           </ul>
         </div>
         <div id="login" className="navbarElements">
-          {auth ? <h1>Inloggad</h1> : <NavAccountSignedOut openLogin={openLogin} openRegister={openRegister} />}
+          {auth ? <NavAccountSignedIn /> : <NavAccountSignedOut openLogin={openLogin} openRegister={openRegister} />}
 
         </div>
       </div>
