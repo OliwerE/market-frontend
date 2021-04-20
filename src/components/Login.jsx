@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 
-const Login = ({ close }) => {
+const Login = ({ close, setAuth }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -12,6 +12,7 @@ const Login = ({ close }) => {
 
     if (status === 200) {
       // "logga in" användare
+      setAuth(true) // obs byt till use context ist för prop drilling!
     } else if (status === 401) {
       // meddela användare att inloggning misslyckades
     } else {

@@ -4,8 +4,9 @@ import './Navbar.css';
 
 import Login from './Login.jsx'
 import Register from './Register.jsx'
+import NavAccountSignedOut from './NavAccountSignedOut.jsx'
 
-const Navbar = () => {
+const Navbar = ({ auth, setAuth }) => {
   const [loginWindow, setLoginWindow] = useState(false)
   const [registerWindow, setRegisterWindow] = useState(false)
  
@@ -67,13 +68,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div id="login" className="navbarElements">
-          <button onClick={openLogin}>Logga in</button>
-          <button onClick={openRegister}>Registrera</button>
+          {auth ? <h1>Inloggad</h1> : <NavAccountSignedOut openLogin={openLogin} openRegister={openRegister} />}
+
         </div>
       </div>
       <div id="navMargin"></div>
       
-      {loginWindow ? <Login close={closeLogin} /> : null}
+      {loginWindow ? <Login setAuth={setAuth} close={closeLogin} /> : null}
       {registerWindow ? <Register close={closeRegister} /> : null}
       
       
