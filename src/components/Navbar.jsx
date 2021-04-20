@@ -69,7 +69,7 @@ const Navbar = ({ auth, setAuth }) => {
           </ul>
         </div>
         <div id="login" className="navbarElements">
-          {auth ? <NavAccountSignedIn /> : <NavAccountSignedOut openLogin={openLogin} openRegister={openRegister} />}
+          {auth ? <NavAccountSignedIn setAuth={setAuth} /> : <NavAccountSignedOut openLogin={openLogin} openRegister={openRegister} />}
 
         </div>
       </div>
