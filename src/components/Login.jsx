@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './Login.css'
 
 const Login = ({ close, setAuth }) => {
+  const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -14,6 +16,7 @@ const Login = ({ close, setAuth }) => {
       // "logga in" användare
       setAuth(true) // obs byt till use context ist för prop drilling!
       close() // stänger fönster
+      history.push('/konto')
     } else if (status === 401) {
       // meddela användare att inloggning misslyckades
     } else {

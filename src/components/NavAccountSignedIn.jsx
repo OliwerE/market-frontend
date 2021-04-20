@@ -4,6 +4,7 @@ import './NavAccountSignedIn.css'
 
 const NavAccountSignedIn = ({ setAuth, name }) => {
   const [username, setUsername] = useState('')  
+  const history = useHistory()
 
   useEffect(() => {
     fetch('http://localhost:8080/auth/username', {
@@ -23,6 +24,7 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
     if (json.successfulLogout) {
       // uppdatera auth state
       setAuth(false)
+      history.push('/') // Redirect till start
     } else {
       // informera användare att utloggning misslyckades
     }
@@ -40,8 +42,6 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
     }).catch(err => console.error(err))
   }
 
-  
-  const history = useHistory()
   const handleUsernameClick = () => {
     console.log('clicked username!')
     history.push('/konto')

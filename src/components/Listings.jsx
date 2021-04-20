@@ -24,10 +24,10 @@ const Listings = () => {
   console.log(listings)
   return (
     <div id="listings">
-      {listings.map((listing) => {
+      {/* listings.map((listing) => {
         return <Listing listing={listing} />
-      })}
-    </div>
+      }) */}
+    </div> // FIXA: koppla ihop med backend
   )
 }
 

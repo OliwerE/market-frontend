@@ -21,10 +21,10 @@ const Questions = () => {
 
   return (
     <>
-      {questions.map((question) => {
+      {/*questions.map((question) => {
         return <Question key={question.id} props={question} />
-      })}
-    </>
+      })*/}
+    </> // Fixa:  Koppla ihop med backend
   )
 }
 

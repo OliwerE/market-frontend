@@ -73,7 +73,7 @@ function App() {
 }
 
 const ProtectedAccount = ({ auth, component:Component}) => {
-   return <Route exact path="/konto" render={() => auth ? (<Component />) : (<Redirect to="/" />)} />
+   return <Route exact path="/konto" render={() => auth ? (<Component />) : (<Error />)} /> // alternativ: <Redirect to="/" /> för auth false
 }
 
 export default App;
