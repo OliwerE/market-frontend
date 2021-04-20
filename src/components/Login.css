@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/* Container */
+
 #loginBox {
   position: fixed;
   display: block;
@@ -16,10 +18,72 @@
 }
 
 #loginBox h2 {
-  margin: 0;
+  margin: 0 auto 10px;
 }
+
+/* Buttons */
+
+#loginCloseBtn {
+  float: right;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: red;
+  border: none;
+  outline: none;
+  border-radius: 0 1rem 0 1rem;
+}
+
+#loginCloseBtn:focus, #loginCloseBtn:active {
+  border: 2px solid black;
+}
+
+#loginCloseBtn:hover {
+  cursor: pointer;
+}
+
+.loginBtn {
+  width: 200px;
+  height: 30px;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #ebe6e6;
+}
+
+.loginBtn:active, .loginBtn:focus {
+  border: 2px solid black;
+}
+
+.loginBtn:hover {
+  cursor: pointer;
+  background-color: #cccccc;
+}
+
+#loginBox form button {
+    margin-top: 15px;
+}
+
+/* Input */
+
+#loginBox form label, #loginBox p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#loginBox form input {
+  width: 200px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+/* Modal */
 
 #loginModalBox {
   height: 25px;
-  margin-top: 5px;
+  margin-top: 20px;
 }

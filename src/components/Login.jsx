@@ -65,7 +65,7 @@ const Login = ({ close, setAuth }) => {
 
   return (
       <div id="loginBox">
-        <button onClick={close}>Stäng</button>
+        <button id="loginCloseBtn" onClick={close}>X</button> <br />
         <div id="loginModalBox">
           {modal && <Modal modalContent={modalContent} /*close={closeModal}*/ />}
         </div>
@@ -75,11 +75,11 @@ const Login = ({ close, setAuth }) => {
           </br><input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input><br>
           </br><label for="password">Lösenord:</label><br>
           </br><input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input><br>
-          </br><button type="submit">Logga in</button>
+          </br><button className="loginBtn" type="submit">Logga in</button>
         </form>
         
         <p>Har du inget konto?</p>
-        <button>Skapa Konto</button>
+        <button className="loginBtn" id="loginCreateAccountBtn">Skapa Konto</button>
       </div>
   )
 }
