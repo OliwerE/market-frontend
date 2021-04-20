@@ -13,6 +13,7 @@ const Login = ({ close, setAuth }) => {
     if (status === 200) {
       // "logga in" användare
       setAuth(true) // obs byt till use context ist för prop drilling!
+      close() // stänger fönster
     } else if (status === 401) {
       // meddela användare att inloggning misslyckades
     } else {
