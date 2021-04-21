@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Register.css'
 
 const Register = ({ close, openLogin, setModal, setModalContent }) => {
+
   const [firstname, setFirstName] = useState('') // byt till lösning utan många useState?
   const [lastname, setLastname] = useState('')
   const [username, setUsername] = useState('')
@@ -9,6 +10,21 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
   const [password, setPassword] = useState('')
   const [passwordRepeat, setPasswordRepeat] = useState('')
   const [city, setCity] = useState('')
+
+  const handleSubmitResponse = (json) => {
+    if (json.status === 200) {
+      // Fixa: Visa modal på login sidan.
+      // setModalContent('Your account has been created.')
+      // setModal(true)
+      openLogin()
+    } else if (json.status === 400 || json.status === 409 || json.status === 500) {
+      setModalContent(json.msg)
+      setModal(true)
+    } else {
+      setModalContent('Unknown Error, try again later')
+      setModal(true)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,37 +42,39 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
     }).then(res => {
       return res.json()
     }).then(json => {
-      console.log(json)
+      handleSubmitResponse(json)
     }).catch(err => console.error(err))
 
   }
 
 
   return (
-    <div id="registerBox">
-        <form onSubmit={handleSubmit}>
+    <>
+        <form id="registerForm" onSubmit={handleSubmit}>
           <label id="firstFormLabel" for="firstname">Förnamn:</label>
           <input type="text" id="firstname" name="firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)}></input>
           <label className="formLabel" for="lastname">Efternamn:</label>
-          <input type="text" id="lastname" name="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)}></input><br>
-          
-          </br><label className="formLabel" for="username">Användarnamn:</label>
+          <input type="text" id="lastname" name="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)}></input>
+          <br />
+
+          <label className="formLabel" for="username">Användarnamn:</label>
           <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
           <label className="formLabel" for="Telefonnummer">Telefonnummer:</label>
-          <input type="text" id="Telefonnummer" name="Telefonnummer" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input><br>
-          
-          </br><label className="formLabel" for="password">Lösenord:</label>
+
+          <input type="text" id="Telefonnummer" name="Telefonnummer" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
+          <br />
+          <label className="formLabel" for="password">Lösenord:</label>
           <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <label className="formLabel" for="passwordRepeat">Upprepa lösenord:</label>
           <input type="password" id="passwordRepeat" name="passwordRepeat" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)}></input><br>
           </br><label className="formLabel" for="city">Ort:</label>
           <input type="text" id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)}></input><br>
-          </br><button type="submit">Skapa konto</button>
+          </br><button className="registerFormBtn" type="submit">Skapa konto</button>
         </form>
         
-        <p>Har du redan ett konto?</p>
-        <button onClick={openLogin} >Logga in</button>
-    </div>
+        <p id="registerFormHasAccount">Har du redan ett konto?</p>
+        <button className="registerFormBtn" onClick={openLogin} >Logga in</button>
+    </>
   )
 }
 

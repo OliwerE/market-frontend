@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#registerBox form input {
+#registerForm input {
   width: 100px;
 }
 
@@ -10,4 +10,29 @@
 
 .formLabel {
   margin-left: 10px;
+}
+
+#registerFormHasAccount {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.registerFormBtn {
+  width: 200px;
+  height: 30px;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #ebe6e6;
+}
+
+.registerFormBtn:active, .registerFormBtn:focus {
+  border: 2px solid black;
+}
+
+.registerFormBtn:hover {
+  cursor: pointer;
+  background-color: #cccccc;
 }
