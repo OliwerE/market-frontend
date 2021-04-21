@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 
-const Register = ({ close, openLogin }) => {
+const Register = ({ close, openLogin, setModal, setModalContent }) => {
   const [firstname, setFirstName] = useState('') // byt till lösning utan många useState?
   const [lastname, setLastname] = useState('')
   const [username, setUsername] = useState('')
@@ -34,8 +34,6 @@ const Register = ({ close, openLogin }) => {
 
   return (
     <div id="registerBox">
-      <button onClick={close}>Close!</button>
-        <h2>Skapa konto</h2>
         <form onSubmit={handleSubmit}>
           <label id="firstFormLabel" for="firstname">Förnamn:</label>
           <input type="text" id="firstname" name="firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)}></input>

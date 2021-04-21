@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#AccountWindowContainer {
+  position: fixed;
+  display: block;
+  width: 500px;
+  height: 400px;
+  top: 15%;
+  left: 35%;
+  z-index: 9999;
+  background-color: #424242;
+  color: white;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: #05050575 0px 20px 40px, #08080848 0px 15px 10px;
+}
+
+#AccountWindowContainer h2 {
+  margin: 0 auto 10px;
+}
+
+/* Buttons */
+
+#AccountWindowContainerCloseBtn {
+  float: right;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: red;
+  border: none;
+  outline: none;
+  border-radius: 0 1rem 0 1rem;
+}
+
+#AccountWindowContainerCloseBtn:focus, #AccountWindowContainerCloseBtn:active {
+  border: 2px solid black;
+}
+
+#AccountWindowContainerCloseBtn:hover {
+  cursor: pointer;
+}
+
+/* Modal */
+
+#AccountWindowContainerModalBox {
+  height: 25px;
+  margin-top: 20px;
+}

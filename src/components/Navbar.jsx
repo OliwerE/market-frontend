@@ -4,6 +4,8 @@ import './Navbar.css';
 
 import Login from './Login.jsx'
 import Register from './Register.jsx'
+import AccountWindow from './AccountWindow.jsx'
+
 import NavAccountSignedOut from './NavAccountSignedOut.jsx'
 import NavAccountSignedIn from './NavAccountSignedIn.jsx'
 
@@ -74,9 +76,12 @@ const Navbar = ({ auth, setAuth }) => {
         </div>
       </div>
       <div id="navMargin"></div>
+
+      {loginWindow ? <AccountWindow setAuth={setAuth} close={closeLogin} openRegister={openRegister} title="Logga in" Component={Login} /> : null}
+      {registerWindow ? <AccountWindow setAuth={setAuth} close={closeRegister} title="Skapa konto" Component={Register} /> : null}
       
-      {loginWindow ? <Login openRegister={openRegister} setAuth={setAuth} close={closeLogin} /> : null}
-      {registerWindow ? <Register openLogin={openLogin} close={closeRegister} /> : null}
+      {/* {loginWindow ? <Login openRegister={openRegister} setAuth={setAuth} close={closeLogin} /> : null}
+      {registerWindow ? <Register openLogin={openLogin} close={closeRegister} /> : null} */}
       
       
       {/* <div id="loginRegisterBox">

@@ -2,21 +2,10 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
 
-import Modal from './Modal.jsx'
-
-const Login = ({ close, setAuth, openRegister }) => {
+const Login = ({ close, setAuth, openRegister, setModal, setModalContent }) => {
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
-  const [modal, setModal] = useState(false)
-  const [modalContent, setModalContent] = useState('')
-
-  /* // Används ej
-  const closeModal = () => { // Bugg: om användare klickar flera ggr så stängs modal efter första 10 sek!
-    setModal(false)
-  }
-  */
 
   const handleResponse = (status, json) => {
     if (status === 200) {
@@ -64,23 +53,17 @@ const Login = ({ close, setAuth, openRegister }) => {
   }
 
   return (
-      <div id="loginBox">
-        <button id="loginCloseBtn" onClick={close}>X</button> <br />
-        <div id="loginModalBox">
-          {modal && <Modal modalContent={modalContent} /*close={closeModal}*/ />}
-        </div>
-        <h2>Logga in</h2>
-        <form onSubmit={handleSubmit}>
+      <>
+        <form id="loginForm" onSubmit={handleSubmit}>
           <label for="username">Användarnamn:</label><br>
           </br><input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input><br>
           </br><label for="password">Lösenord:</label><br>
           </br><input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input><br>
           </br><button className="loginBtn" type="submit">Logga in</button>
         </form>
-        
-        <p>Har du inget konto?</p>
+        <p id="loginFormNoAccountText">Har du inget konto?</p>
         <button onClick={openRegister} className="loginBtn" id="loginCreateAccountBtn">Skapa Konto</button>
-      </div>
+      </>
   )
 }
 
