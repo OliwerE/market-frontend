@@ -1,20 +1,24 @@
 @charset "UTF-8";
 
-#registerForm input {
-  width: 100px;
+.registerFormRow {
+  width: 400px;
+  margin: 0 auto 0;
 }
 
-#firstFormLabel, .formLabel {
-  margin-right: 10px;
+.registerFormColumn {
+  width: 200px;
+  float: left;
 }
 
-.formLabel {
-  margin-left: 10px;
+.registerFormColumn label {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 #registerFormHasAccount {
   font-size: 1rem;
   font-weight: bold;
+  margin: 5px 0 0 0;
 }
 
 .registerFormBtn {
@@ -26,6 +30,7 @@
   border: none;
   outline: none;
   background-color: #ebe6e6;
+  margin-top: 0.5rem;
 }
 
 .registerFormBtn:active, .registerFormBtn:focus {
@@ -35,4 +40,11 @@
 .registerFormBtn:hover {
   cursor: pointer;
   background-color: #cccccc;
+}
+
+.registerFormColumn input {
+  width: 180px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 0.25rem;
 }

@@ -9,6 +9,7 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('')
   const [passwordRepeat, setPasswordRepeat] = useState('')
+  const [email, setEmail] = useState('')
   const [city, setCity] = useState('')
 
   const handleSubmitResponse = (json) => {
@@ -28,9 +29,11 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(firstname, lastname, username, phoneNumber, password, passwordRepeat, city)
+    console.log(firstname, lastname, username, phoneNumber, password, passwordRepeat, email, city)
     
-    const userData = { firstname, lastname, username, phoneNumber, password, passwordRepeat, city }
+    const userData = { firstname, lastname, username, phoneNumber, password, passwordRepeat, email, city }
+
+    // OBS!! email hanteras inte på servern!
 
     fetch('http://localhost:8080/auth/register', {
     method: 'POST',
@@ -50,30 +53,56 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
 
   return (
     <>
-        <form id="registerForm" onSubmit={handleSubmit}>
-          <label id="firstFormLabel" for="firstname">Förnamn:</label>
-          <input type="text" id="firstname" name="firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)}></input>
-          <label className="formLabel" for="lastname">Efternamn:</label>
-          <input type="text" id="lastname" name="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)}></input>
-          <br />
-
-          <label className="formLabel" for="username">Användarnamn:</label>
-          <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
-          <label className="formLabel" for="Telefonnummer">Telefonnummer:</label>
-
-          <input type="text" id="Telefonnummer" name="Telefonnummer" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
-          <br />
-          <label className="formLabel" for="password">Lösenord:</label>
-          <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-          <label className="formLabel" for="passwordRepeat">Upprepa lösenord:</label>
-          <input type="password" id="passwordRepeat" name="passwordRepeat" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)}></input><br>
-          </br><label className="formLabel" for="city">Ort:</label>
-          <input type="text" id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)}></input><br>
-          </br><button className="registerFormBtn" type="submit">Skapa konto</button>
-        </form>
-        
-        <p id="registerFormHasAccount">Har du redan ett konto?</p>
-        <button className="registerFormBtn" onClick={openLogin} >Logga in</button>
+        <div>
+          <form id="registerForm" onSubmit={handleSubmit}>
+            
+            <div className="registerFormRow">
+              <div className="registerFormColumn">
+                <label id="firstFormLabel" for="firstname">Förnamn</label>
+                <input type="text" id="firstname" name="firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)}></input>
+              </div>
+              <div className="registerFormColumn">
+                <label for="lastname">Efternamn</label>
+                <input type="text" id="lastname" name="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)}></input>
+              </div>
+            </div>
+            <div className="registerFormRow">
+              <div className="registerFormColumn">
+                <label for="username">Användarnamn</label>
+                <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+              </div>
+              <div className="registerFormColumn">
+                <label for="Telefonnummer">Telefonnummer</label>
+                <input type="text" id="Telefonnummer" name="Telefonnummer" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
+              </div>
+            </div>
+            <div className="registerFormRow">
+              <div className="registerFormColumn">
+                <label for="email">E-post</label>
+                <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+              </div>
+              <div className="registerFormColumn">
+                <label for="city">Ort</label>
+                <input type="text" id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)}></input>
+              </div>
+            </div>
+            <div className="registerFormRow">
+              <div className="registerFormColumn">
+                <label for="password">Lösenord</label>
+                <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+              </div>
+              <div className="registerFormColumn">
+                <label for="passwordRepeat">Upprepa lösenord</label>
+                <input type="password" id="passwordRepeat" name="passwordRepeat" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)}></input>
+              </div>
+              <button className="registerFormBtn" type="submit">Skapa konto</button>
+            </div>
+          </form>
+        </div>
+        <div id="registerFormHasAccountContainer">
+          <p id="registerFormHasAccount">Har du redan ett konto?</p>
+          <button className="registerFormBtn" onClick={openLogin} >Logga in</button>
+        </div>
     </>
   )
 }
