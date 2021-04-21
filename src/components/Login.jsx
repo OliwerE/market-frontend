@@ -4,7 +4,7 @@ import './Login.css'
 
 import Modal from './Modal.jsx'
 
-const Login = ({ close, setAuth }) => {
+const Login = ({ close, setAuth, openRegister }) => {
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -79,7 +79,7 @@ const Login = ({ close, setAuth }) => {
         </form>
         
         <p>Har du inget konto?</p>
-        <button className="loginBtn" id="loginCreateAccountBtn">Skapa Konto</button>
+        <button onClick={openRegister} className="loginBtn" id="loginCreateAccountBtn">Skapa Konto</button>
       </div>
   )
 }

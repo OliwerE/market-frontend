@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 
-const Register = ({ close }) => {
+const Register = ({ close, openLogin }) => {
   const [firstname, setFirstName] = useState('') // byt till lösning utan många useState?
   const [lastname, setLastname] = useState('')
   const [username, setUsername] = useState('')
@@ -57,7 +57,7 @@ const Register = ({ close }) => {
         </form>
         
         <p>Har du redan ett konto?</p>
-        <button>Logga in</button>
+        <button onClick={openLogin} >Logga in</button>
     </div>
   )
 }

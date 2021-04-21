@@ -75,8 +75,8 @@ const Navbar = ({ auth, setAuth }) => {
       </div>
       <div id="navMargin"></div>
       
-      {loginWindow ? <Login setAuth={setAuth} close={closeLogin} /> : null}
-      {registerWindow ? <Register close={closeRegister} /> : null}
+      {loginWindow ? <Login openRegister={openRegister} setAuth={setAuth} close={closeLogin} /> : null}
+      {registerWindow ? <Register openLogin={openLogin} close={closeRegister} /> : null}
       
       
       {/* <div id="loginRegisterBox">
