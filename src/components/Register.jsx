@@ -95,6 +95,7 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
                 <label for="passwordRepeat">Upprepa lösenord</label>
                 <input type="password" id="passwordRepeat" name="passwordRepeat" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)}></input>
               </div>
+              {/* Lägg till checkbox GDPR */}
               <button className="registerFormBtn" type="submit">Skapa konto</button>
             </div>
           </form>
