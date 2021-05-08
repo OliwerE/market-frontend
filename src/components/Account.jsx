@@ -1,15 +1,34 @@
 import React from 'react'
+import './Account.css'
 
 const Account = () => {
   return (
     <div>
-      <h1>Mitt konto</h1>
-      
-      <button>Skapa annons</button>
+      <div id="myAccountNav">
+        <div id="myAccountNavContent">
+            <ul>
+              <li>
+                Mina Annonser
+              </li>
+              <li>
+                Meddelanden
+              </li>
+              <li>
+                Profil
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div id="myAccountContentContainer">
+
+        test
+
+      </div>
+      {/* <button>Skapa annons</button>
       <br/>
       <button>Meddelanden</button>
       <br/>
-      <button>Inställningar</button>
+      <button>Inställningar</button> */}
     </div>
   )
 }
