@@ -6267,6 +6267,13 @@
   "resolved" "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
   "version" "0.0.1"
 
+"isemail@^3.2.0":
+  "integrity" "sha512-zKqkK+O+dGqevc93KNsbZ/TqTUFd46MwWjYOoMrjIMZ51eU7DtQG3Wmd9SQQT7i7RVnuTPEiYEWHU3MSbxC1Tg=="
+  "resolved" "https://registry.npmjs.org/isemail/-/isemail-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "punycode" "2.x.x"
+
 "isexe@^2.0.0":
   "integrity" "sha1-6PvzdNxVb/iUehDcsFctYz8s+hA="
   "resolved" "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz"
@@ -9097,7 +9104,7 @@
   "resolved" "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz"
   "version" "1.4.1"
 
-"punycode@^2.1.0", "punycode@^2.1.1":
+"punycode@^2.1.0", "punycode@^2.1.1", "punycode@2.x.x":
   "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
   "resolved" "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"

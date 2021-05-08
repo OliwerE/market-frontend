@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Register.css'
+import isemail from 'isemail'
 
 const Register = ({ close, openLogin, setModal, setModalContent }) => {
 
@@ -22,32 +23,41 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
       setModalContent(json.msg)
       setModal(true)
     } else {
-      setModalContent('Unknown Error, try again later')
+      setModalContent('Okänt fel, försök igen senare.')
       setModal(true)
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(firstname, lastname, username, phoneNumber, password, passwordRepeat, email, city)
-    
-    const userData = { firstname, lastname, username, phoneNumber, password, passwordRepeat, email, city }
-
-    // OBS!! email hanteras inte på servern!
-
-    fetch('http://localhost:8080/auth/register', {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(userData)
-    }).then(res => {
-      return res.json()
-    }).then(json => {
-      handleSubmitResponse(json)
-    }).catch(err => console.error(err))
-
+    if (firstname.trim().length > 0 && lastname.trim().length > 0 && username.trim().length > 0 && phoneNumber.trim().length > 0 && password.trim().length > 0 && passwordRepeat.trim().length > 0 && email.trim().length > 0 && city.trim().length > 0) {
+      if (password === passwordRepeat) {
+        if (isemail.validate(email)) {
+          const userData = { firstname, lastname, username, phoneNumber, password, email, city }
+          fetch('http://localhost:8080/auth/register', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(userData)
+          }).then(res => {
+            return res.json()
+          }).then(json => {
+            handleSubmitResponse(json)
+          }).catch(err => console.error(err))
+        } else {
+        setModalContent('Ange en korrekt email adress!')
+        setModal(true)
+        }
+      } else {
+        setModalContent('Lösenorden matchar inte.')
+        setModal(true)
+      }
+    } else {
+      setModalContent('Vänligen fyll i alla fält!')
+      setModal(true)
+    }
   }
 
 
