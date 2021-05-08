@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './NavAccountSignedIn.css'
 
 const NavAccountSignedIn = ({ setAuth, name }) => {
@@ -49,6 +50,7 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
 
   return (
     <div id="navSignedIn">
+      <Link id="createListingLink" to="/hjalp"><p>Skapa Annons</p></Link>
       <h2 onClick={handleUsernameClick} >{username}</h2>
       <button onClick={handleLogout} >Logga ut</button>
     </div>
