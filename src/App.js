@@ -12,6 +12,7 @@ import Sell from './components/Sell'
 import Help from './components/Help'
 import Error from './components/Error'
 import Account from './components/Account'
+import CreateListing from './components/CreateListing'
 
 function App() {
   const [auth, setAuth] = useState(false) // Om anv är inloggad
@@ -56,12 +57,13 @@ function App() {
             <Help />
           </Route>
           
-          
-          <Route exact path="/test">
+          {/* <Route exact path="/test">
             <Redirect to="/" />
-          </Route>
+          </Route> */}
 
           <ProtectedAccount exact path="/konto" auth={auth} component={Account} />
+
+          <ProtectedAccount exact path="/skapa-annons" auth={auth} component={CreateListing} />
 
           <Route path="*">
             <Error />
@@ -72,8 +74,8 @@ function App() {
   );
 }
 
-const ProtectedAccount = ({ auth, component:Component}) => {
-   return <Route exact path="/konto" render={() => auth ? (<Component />) : (<Error />)} /> // alternativ: <Redirect to="/" /> för auth false
+const ProtectedAccount = ({ auth, component:Component, path}) => {
+   return <Route exact path={path} render={() => auth ? (<Component />) : (<Error />)} /> // alternativ: <Redirect to="/" /> för auth false
 }
 
 export default App;

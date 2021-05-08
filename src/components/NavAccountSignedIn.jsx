@@ -50,7 +50,7 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
 
   return (
     <div id="navSignedIn">
-      <Link id="createListingLink" to="/hjalp"><p>Skapa Annons</p></Link>
+      <Link id="createListingLink" to="/skapa-annons"><p>Skapa Annons</p></Link>
       <h2 onClick={handleUsernameClick} >{username}</h2>
       <button onClick={handleLogout} >Logga ut</button>
     </div>
