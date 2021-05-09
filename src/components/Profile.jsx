@@ -4,7 +4,6 @@ import './Profile.css'
 import Modal from './Modal.jsx'
 
 const Profile = () => {
-  var profileData = {}
   const [username, setUsername] = useState('')
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
@@ -32,7 +31,6 @@ const Profile = () => {
       setPhoneNumber(json.phoneNumber)
       setEmail(json.email)
       setCity(json.city)
-      profileData = json
       console.log(json)
       console.log(lastname)
     }).catch((err) => {
@@ -43,7 +41,7 @@ const Profile = () => {
 
 
   const handleResponse = (status, json) => {
-    if (status === 400) {
+    if (status === 400 && json.msg === 'Current password does not match password in database') {
       setModalContent('Nuvarande lösenord är inte korrekt.')
       setModal(true)
     } else if (status === 500) {
@@ -52,60 +50,68 @@ const Profile = () => {
     } else if (status === 200) {
       setModalContent('Kontot har uppdaterats')
       setModal(true)
+    } else if (status === 400 && json.msg === 'Missing key or keys in request!') {
+      setModalContent('Vängligen fyll i alla fält (lösenord krävs ej)')
+      setModal(true)
     } else {
       setModalContent('Ett okänt fel har inträffat')
       setModal(true)
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // FIXA: jämför om datan ändrats annars ingen fetch!
     e.preventDefault()
-    const data = {
-      firstname,
-      lastname,
-      phoneNumber,
-      email,
-      city
-    }
-
-    if (oldPassword.length > 0) {
-      console.log('lösenord uppdateras')
-      // uppdatera lösenordet
-
-      if (newPassword === newPasswordRepeat) {
-        data.newPassword = newPassword
-        data.password = oldPassword
-      } else {
-        setModalContent('Nya lösenorden är inte lika.')
-        setModal(true)
-        return
+    if (firstname.trim().length > 0 && lastname.trim().length > 0 && phoneNumber.toString().trim().length > 0 && email.trim().length > 0 && city.trim().length > 0) {// obs phonenumber ska ändras till string i db!
+      const data = {
+        firstname,
+        lastname,
+        phoneNumber,
+        email,
+        city
       }
-    } else { // ta bort sen!
-      console.log('Lösenord inte ändrat')
+
+      if (oldPassword.length > 0) {
+        console.log('lösenord uppdateras')
+        // uppdatera lösenordet
+
+        if (newPassword === newPasswordRepeat) {
+          data.newPassword = newPassword
+          data.password = oldPassword
+        } else {
+          setModalContent('Nya lösenorden är inte lika.')
+          setModal(true)
+          return
+        }
+      } else { // ta bort sen!
+        console.log('Lösenord inte ändrat')
+      }
+
+      console.log(data)
+
+        var statusCode = 0
+        fetch('http://localhost:8080/auth/profile', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+        }).then(res => {
+          statusCode = res.status
+          return res.json()
+        }).then(json => {
+          handleResponse(statusCode, json)
+          console.log(json)
+          console.log(statusCode)
+        }).catch(err => {
+          console.error(err)
+        })
+
+      console.log('submit!')
+    } else {
+      setModalContent('Vängligen fyll i alla fält (lösenord krävs ej)')
+      setModal(true)
     }
-
-    console.log(data)
-
-      var statusCode = 0
-      fetch('http://localhost:8080/auth/profile', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data)
-      }).then(res => {
-        statusCode = res.status
-        return res.json()
-      }).then(json => {
-        handleResponse(statusCode, json)
-        console.log(json)
-        console.log(statusCode)
-      }).catch(err => {
-        console.error(err)
-      })
-
-    console.log('submit!')
   }
 
   return (
