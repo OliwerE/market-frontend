@@ -40,12 +40,44 @@ const CreateListing = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('listing submit!')
-    console.log(title)
-    console.log(productImage)
-    console.log(description)
-    console.log(category)
-    console.log(price)
-    console.log(listingType)
+    // console.log(title)
+    // console.log(productImage)
+    // console.log(description)
+    // console.log(category)
+    // console.log(price)
+    // console.log(listingType)
+    console.log(title.trim().length > 0)
+    console.log(description.trim().length > 0)
+
+    const data = {
+      title,
+      productImage: 'test',
+      description,
+      category,
+      listingType,
+      price
+    }
+
+    if (title.trim().length > 0 /* fixa: || productImage.length > 0 */&& description.trim().length > 0 && category.trim().length > 0 && price.trim().length > 0 && listingType.trim().length > 0) {
+      var status = null
+      fetch('http://localhost:8080/listings/create', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+          }).then(res => {
+            status= res.status
+            return res.json()
+          }).then(json => {
+            console.log(json)
+            // Fix: Respons
+
+          }).catch(err => console.error(err))
+    } else {
+      console.log('annons uppfyller inte krav!')
+    }
   }
 
   return (
