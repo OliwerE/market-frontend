@@ -66,7 +66,7 @@ const Profile = () => {
     console.log(data)
 
       var statusCode = 0
-      fetch('#', {
+      fetch('http://localhost:8080/auth/profile', {
       method: 'POST',
       credentials: 'include',
       headers: {
