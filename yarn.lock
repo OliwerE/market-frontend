@@ -5056,6 +5056,11 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
 
+"FileReader@^0.10.2":
+  "integrity" "sha1-GxF722te2F4kGsPLEPG3CGUk5Tk="
+  "resolved" "https://registry.npmjs.org/FileReader/-/FileReader-0.10.2.tgz"
+  "version" "0.10.2"
+
 "filesize@6.1.0":
   "integrity" "sha512-LpCHtPQ3sFx67z+uh2HnSyWSLLu5Jxo21795uRDuar/EOuYWXib5EmPaGIBuSnRqH2IODiKA2k5re/K9OnN/Yg=="
   "resolved" "https://registry.yarnpkg.com/filesize/-/filesize-6.1.0.tgz"

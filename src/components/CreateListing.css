@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#createListingContainer h1 {
+  text-align: center;
+}
+
+#createListingContainer {
+  background-color: #fff;
+  width: 900px;
+  min-height: 800px;
+  margin: 0 auto;
+}
+
+#createListingContainer input, #createListingContainer label, #createListingContainer button, #createListingContainer Select {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#createListingContainer Select {
+  margin-bottom: 10px;
+}
+
+#createListingContainer textarea {
+  display: block;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  resize: none;
+}
