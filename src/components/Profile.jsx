@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Profile.css'
 
+import Modal from './Modal.jsx'
+
 const Profile = () => {
   var profileData = {}
   const [username, setUsername] = useState('')
@@ -14,7 +16,8 @@ const Profile = () => {
   const [newPassword, setNewPassword] = useState('')
   const [newPasswordRepeat, setNewPasswordRepeat] = useState('')
 
-
+  const [modal, setModal] = useState(false)
+  const [modalContent, setModalContent] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:8080/auth/profile', {
@@ -38,6 +41,23 @@ const Profile = () => {
     })
   }, [])
 
+
+  const handleResponse = (status, json) => {
+    if (status === 400) {
+      setModalContent('Nuvarande lösenord är inte korrekt.')
+      setModal(true)
+    } else if (status === 500) {
+      setModalContent('Internt serverfel')
+      setModal(true)
+    } else if (status === 200) {
+      setModalContent('Kontot har uppdaterats')
+      setModal(true)
+    } else {
+      setModalContent('Ett okänt fel har inträffat')
+      setModal(true)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
@@ -53,11 +73,12 @@ const Profile = () => {
       // uppdatera lösenordet
 
       if (newPassword === newPasswordRepeat) {
-        console.log('nya lösenorden stämmer')
         data.newPassword = newPassword
         data.password = oldPassword
       } else {
-        console.log('Nya lösenorden stämmer inte!')
+        setModalContent('Nya lösenorden är inte lika.')
+        setModal(true)
+        return
       }
     } else { // ta bort sen!
       console.log('Lösenord inte ändrat')
@@ -77,29 +98,19 @@ const Profile = () => {
         statusCode = res.status
         return res.json()
       }).then(json => {
-        // handleResponse(statusCode, json)
+        handleResponse(statusCode, json)
         console.log(json)
         console.log(statusCode)
       }).catch(err => {
         console.error(err)
       })
 
-
-
-    // if (firstname !== profileData.firstname || lastname !== profileData.lastname || phoneNumber !== profileData.phoneNumber || email !== profileData.email || city !== profileData.email) { // firstname !== profileData.firstname || lastname !== profileData.lastname || phoneNumber !== profileData.phoneNumber || email !== profileData.email || city !== profileData.email
-    //   // om någon data (förutom password) ändrats
-    //   // uppdatera användarinfo
-    //   console.log('användardata uppdateras')
-    // } else { // ta bort sen
-    //   // användardata inte ändrat
-    //   console.log('användardata inte ändrat')
-    // }
-
     console.log('submit!')
   }
 
   return (
     <div id="AccountProfileContainer">
+    {modal && <Modal modalContent={modalContent} /*close={closeModal}*/ />}
     <h1>Min profil</h1>
     <p>Användarnamn: {username}</p>
     <form id="loginForm" onSubmit={handleSubmit}>
