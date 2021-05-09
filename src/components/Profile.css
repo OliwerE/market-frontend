@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#AccountProfileContainer {
+  display: block;
+  width: 400px;
+  min-height: 400px;
+  background-color: white;
+  margin: 0px auto;
+}
+
+#AccountProfileContainer h1 {
+  text-align: center;
+}
