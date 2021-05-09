@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Profile.css'
 
 const Profile = () => {
+  var profileData = {}
   const [username, setUsername] = useState('')
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
@@ -28,6 +29,7 @@ const Profile = () => {
       setPhoneNumber(json.phoneNumber)
       setEmail(json.email)
       setCity(json.city)
+      profileData = json
       console.log(json)
       console.log(lastname)
     }).catch((err) => {
@@ -38,6 +40,61 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const data = {
+      firstname,
+      lastname,
+      phoneNumber,
+      email,
+      city
+    }
+
+    if (oldPassword.length > 0) {
+      console.log('lösenord uppdateras')
+      // uppdatera lösenordet
+
+      if (newPassword === newPasswordRepeat) {
+        console.log('nya lösenorden stämmer')
+        data.newPassword = newPassword
+        data.password = oldPassword
+      } else {
+        console.log('Nya lösenorden stämmer inte!')
+      }
+    } else { // ta bort sen!
+      console.log('Lösenord inte ändrat')
+    }
+
+    console.log(data)
+
+      var statusCode = 0
+      fetch('#', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+      }).then(res => {
+        statusCode = res.status
+        return res.json()
+      }).then(json => {
+        // handleResponse(statusCode, json)
+        console.log(json)
+        console.log(statusCode)
+      }).catch(err => {
+        console.error(err)
+      })
+
+
+
+    // if (firstname !== profileData.firstname || lastname !== profileData.lastname || phoneNumber !== profileData.phoneNumber || email !== profileData.email || city !== profileData.email) { // firstname !== profileData.firstname || lastname !== profileData.lastname || phoneNumber !== profileData.phoneNumber || email !== profileData.email || city !== profileData.email
+    //   // om någon data (förutom password) ändrats
+    //   // uppdatera användarinfo
+    //   console.log('användardata uppdateras')
+    // } else { // ta bort sen
+    //   // användardata inte ändrat
+    //   console.log('användardata inte ändrat')
+    // }
+
     console.log('submit!')
   }
 
