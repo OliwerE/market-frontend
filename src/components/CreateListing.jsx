@@ -81,6 +81,7 @@ const CreateListing = () => {
 
           }).catch(err => console.error(err))
     } else {
+      console.log('annons uppfyller inte krav!')
       setModalContent('Fyll i alla fält!')
       setModal(true)
     }

@@ -4,13 +4,13 @@ import './Listings.css'
 
 import Listing from './Listing.jsx'
 
-const Listings = () => {
+const Listings = ({ url }) => {
   const [listings, setListings] = useState([])
   const getData = async () => {
-    await fetch('http://localhost:8080/test/listings').then(res => {
+    await fetch(url).then(res => {
       return res.json()
     }).then((json) => {
-      setListings(json)
+      setListings(json.foundListings)
     }).catch(err => {
       console.log(err)
     })
@@ -24,9 +24,9 @@ const Listings = () => {
   console.log(listings)
   return (
     <div id="listings">
-      {/* listings.map((listing) => {
+      {listings.map((listing) => {
         return <Listing listing={listing} />
-      }) */}
+      })}
     </div> // FIXA: koppla ihop med backend
   )
 }

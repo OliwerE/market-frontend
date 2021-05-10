@@ -15,7 +15,7 @@ function Sell() {
         (sälj) sökkomponent
       </div>
       <div id="sellListings">
-        <Listings />
+        <Listings url="http://localhost:8080/listings/sell" />
       </div>
       <div id="sellLatest">
         <Latest id="latestComponent" />
