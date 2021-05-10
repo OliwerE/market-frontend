@@ -13,6 +13,7 @@ import Help from './components/Help'
 import Error from './components/Error'
 import Account from './components/Account'
 import CreateListing from './components/CreateListing'
+import ListingPage from './components/ListingPage'
 
 function App() {
   const [auth, setAuth] = useState(false) // Om anv är inloggad
@@ -60,6 +61,10 @@ function App() {
           {/* <Route exact path="/test">
             <Redirect to="/" />
           </Route> */}
+
+          <Route path="/salj/">
+            <ListingPage />
+          </Route>
 
           <ProtectedAccount exact path="/konto" auth={auth} component={Account} />
 
