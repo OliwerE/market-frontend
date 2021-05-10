@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './CreateListing.css'
 
+import Modal from './Modal.jsx'
+
 // import FileReader from 'FileReader' // ta bort?
 
 const CreateListing = () => {
@@ -10,6 +12,9 @@ const CreateListing = () => {
   const [category, setCategory] = useState('kategori 1')
   const [description, setDescription] = useState('')
   const [listingType, setListingType] = useState('salj')
+  const [modal, setModal] = useState(false)
+  const [modalContent, setModalContent] = useState('')
+
 
   const imageHandler = (image) => {
     console.log(image)
@@ -76,12 +81,14 @@ const CreateListing = () => {
 
           }).catch(err => console.error(err))
     } else {
-      console.log('annons uppfyller inte krav!')
+      setModalContent('Fyll i alla fält!')
+      setModal(true)
     }
   }
 
   return (
     <div id="createListingContainer">
+      {modal && <Modal modalContent={modalContent} /*close={closeModal}*/ />}
       <h1>Skapa Annons</h1>
       <form id="registerForm" onSubmit={handleSubmit}>
 
