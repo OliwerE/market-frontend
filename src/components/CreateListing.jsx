@@ -65,7 +65,7 @@ const CreateListing = () => {
 
     if (title.trim().length > 0 /* fixa: || productImage.length > 0 */&& description.trim().length > 0 && category.trim().length > 0 && price.trim().length > 0 && listingType.trim().length > 0) {
       var status = null
-      fetch('http://localhost:8080/listings/create', {
+      fetch(process.env.REACT_APP_CREATE_LISTING, {
           method: 'POST',
           credentials: 'include',
           headers: {

@@ -12,7 +12,7 @@ const ListingPage = () => {
 
     console.log(id) // OBS! om en användare själv lägger till något på slutet efter id så fungerar detta inte!!
 
-    fetch(`http://localhost:8080/listings/${id}`, {
+    fetch(`${process.env.REACT_APP_GET_LISTINGS}/${id}`, {
       method: 'GET',
       // credentials: 'include',
       headers: {

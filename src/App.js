@@ -31,7 +31,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:8080/auth/check', {
+    fetch(process.env.REACT_APP_AUTH_CHECK, {
     method: 'GET',
     credentials: 'include'
     }).then(res => {

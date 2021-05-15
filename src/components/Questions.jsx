@@ -7,7 +7,7 @@ const Questions = () => {
   const [questions, setQuestions] = useState([])
 
   const getQuestions = async () => {
-    await fetch('http://localhost:8080/test/questions').then((res) => {
+    await fetch(process.env.REACT_APP_GET_HELP_QUESTIONS).then((res) => {
       return res.json()
     }).then((json) => {
       setQuestions(json)

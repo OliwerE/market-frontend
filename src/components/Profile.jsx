@@ -19,7 +19,7 @@ const Profile = () => {
   const [modalContent, setModalContent] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:8080/auth/profile', {
+    fetch(process.env.REACT_APP_POST_GET_USER_PROFILE, {
       method: 'GET',
       credentials: 'include'
     }).then((res) => {
@@ -89,7 +89,7 @@ const Profile = () => {
       console.log(data)
 
         var statusCode = 0
-        fetch('http://localhost:8080/auth/profile', {
+        fetch(process.env.REACT_APP_POST_GET_USER_PROFILE, {
         method: 'POST',
         credentials: 'include',
         headers: {

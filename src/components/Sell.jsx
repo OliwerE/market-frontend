@@ -15,7 +15,7 @@ function Sell() {
         (sälj) sökkomponent
       </div>
       <div id="sellListings">
-        <Listings url="http://localhost:8080/listings/sell" />
+        <Listings url={process.env.REACT_APP_GET_SELL_LISTINGS} />
       </div>
       <div id="sellLatest">
         <Latest id="latestComponent" />

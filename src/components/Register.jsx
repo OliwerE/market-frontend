@@ -20,7 +20,7 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
       // setModal(true)
       openLogin()
     } else if (json.status === 400 || json.status === 409 || json.status === 500) {
-      setModalContent(json.msg)
+      setModalContent(json.msg) // Byt till Användarnamn existerar redan!
       setModal(true)
     } else {
       setModalContent('Okänt fel, försök igen senare.')
@@ -34,7 +34,7 @@ const Register = ({ close, openLogin, setModal, setModalContent }) => {
       if (password === passwordRepeat) {
         if (isemail.validate(email)) {
           const userData = { firstname, lastname, username, phoneNumber, password, email, city }
-          fetch('http://localhost:8080/auth/register', {
+          fetch(process.env.REACT_APP_POST_REGISTER, {
           method: 'POST',
           credentials: 'include',
           headers: {

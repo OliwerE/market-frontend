@@ -6,7 +6,7 @@ const MyListings = () => {
   return (
     <div>
       Mina annonser
-      <Listings url="http://localhost:8080/listings/user" />
+      <Listings url={process.env.REACT_APP_GET_OWN_LISTINGS} />
     </div>
   )
 }

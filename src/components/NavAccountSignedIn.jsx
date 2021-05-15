@@ -8,7 +8,7 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
   const history = useHistory()
 
   useEffect(() => {
-    fetch('http://localhost:8080/auth/username', {
+    fetch(process.env.REACT_APP_GET_USERNAME, {
       method: 'GET',
       credentials: 'include'
     }).then((res) => {
@@ -33,7 +33,7 @@ const NavAccountSignedIn = ({ setAuth, name }) => {
 
 
   const handleLogout = () => {
-    fetch('http://localhost:8080/auth/logout', {
+    fetch(process.env.REACT_APP_POST_LOGOUT, {
     method: 'POST',
     credentials: 'include',
     }).then(res => {

@@ -5,7 +5,7 @@ const Latest = () => {
   const [adverts, setadverts] = useState([])
 
   const getData = async () => {
-    await fetch('http://localhost:8080/test/latest').then(res => {
+    await fetch(process.env.REACT_APP_GET_LATEST_LISTINGS).then(res => {
       return res.json()
     }).then((json) => {
       setadverts(json)

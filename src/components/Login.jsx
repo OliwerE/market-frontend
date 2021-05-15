@@ -29,7 +29,7 @@ const Login = ({ close, setAuth, openRegister, setModal, setModalContent }) => {
         password
       }
       let statusCode = 0
-      fetch('http://localhost:8080/auth/login', {
+      fetch(process.env.REACT_APP_POST_LOGIN, {
       method: 'POST',
       credentials: 'include',
       headers: {
